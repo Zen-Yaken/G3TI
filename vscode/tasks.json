@@ -1,0 +1,81 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "Debug",
+			"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+			"args": [
+				//"-fdiagnostics-color=always",
+				"-g",
+				"${workspaceFolder}\\src\\*.cpp", //WorkspaceFolder pts at our project folder
+				"-o", //-o means what follows is the name of the executable
+				"${workspaceFolder}\\build\\debug\\${fileBasenameNoExtension}.exe",
+				"-I", 
+				"${workspaceFolder}\\include",
+				"-I",
+				"C:\\Program Files (x86)\\wxWidgets1\\include",
+				"-I",
+				"C:\\Program Files (x86)\\wxWidgets1\\lib\\gcc_x64_dll\\mswud",
+				"-L", // this line and 1 below are us telling the compiler where the binaries of wxWidgets1 are
+				"C:\\Program Files (x86)\\wxWidgets1\\lib\\gcc_x64_dll",
+				"-l", // which libraries we want to link agaisnt
+				"wxmsw32ud_core", // actual file name is libwxmsw32ud_core.a
+				"-l",
+				"wxbase32ud",
+				
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: C:\\msys64\\ucrt64\\bin\\g++.exe"
+		},
+
+		{
+			"type": "cppbuild",
+			"label": "Release",
+			"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+			"args": [
+				//"-fdiagnostics-color=always",
+				"-mwindows",
+				"${workspaceFolder}\\src\\*.cpp", //WorkspaceFolder pts at our project folder
+				"-o", //-o means what follows is the name of the executable
+				"${workspaceFolder}\\build\\release\\${fileBasenameNoExtension}.exe",
+				"-I",
+				"${workspaceFolder}\\include",
+				"-I",
+				//"C:\\Program Files (x86)\\wxWidgets1\\include",
+				"${workspaceFolder}\\dep\\include",
+				"-I",
+				"${workspaceFolder}\\dep\\lib\\gcc_x64_dll\\mswu",
+				//"C:\\Program Files (x86)\\wxWidgets1\\lib\\gcc_x64_dll\\mswu", // this line and 1 below are us telling the compiler where the binaries of wxWidgets1 are
+				"-L",
+				"${workspaceFolder}\\dep\\lib\\gcc_x64_dll", 
+				//"C:\\Program Files (x86)\\wxWidgets1\\lib\\gcc_x64_dll",
+				"-l", // which libraries we want to link agaisnt
+				"wxmsw32u_core", // actual file name is libwxmsw32ud_core.a
+				"-l",
+				"wxbase32u",
+				
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: C:\\msys64\\ucrt64\\bin\\g++.exe"
+		}
+	]
+}
